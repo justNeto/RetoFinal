@@ -25,12 +25,12 @@ Season::Season(vector<Episode> season, bool onAir, int seasonNum) {
 }
 
 int Season::getSeasonSize() {
-  season.size();
+    return season.size();
 }
 
 void Season::print() {
   int num = 1;
-  cout << "Season number: " << getSeasonSize << seasonNum << endl;
+  cout << "Season number: " << getSeasonSize() << seasonNum << endl;
   cout << "Number of episodes: " << getSeasonSize() << endl;
   cout << "Average score of the season: " << getScore() << endl;
 
