@@ -21,21 +21,32 @@ int main () {
     c.addEpisode(Movie("Joe Russo, Anthony Russo", "EG04", "Avengers: Endgame", "Action", 182, 2019, vector <double> {4.2}));
 
     vector <Episode> lista;
+    vector <Series> programas;
 
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
-    lista.push_back(Episode());
+    lista.push_back(Episode("E", "01234", "Casa de los Dibujos",  "Comedy", 10, vector <double> {4,5,4}));
+    lista.push_back(Episode("E", "03745", "Lo que se",  "Thriller", 10, vector <double> {3.2,4.2,4}));
+    lista.push_back(Episode("E", "92834", "Black Noir",  "Drama", 10, vector <double> {2.3,5,4}));
+    lista.push_back(Episode("E", "12643", "Nada igual en el mundo",  "Drama", 10, vector <double> {4,5,4}));
+    lista.push_back(Episode("E", "01234", "Carnicero, panadero, eres un buen compañero",  "Drama", 10, vector <double> {3.9,3.6,4.1}));
+    lista.push_back(Episode("R", "37263", "Los Heroes",  "Action", 10, vector <double> {4,5,4}));
+    lista.push_back(Episode("R", "01234", "Estrella",  "Action", 10, vector <double> {3,3,4}));
+    lista.push_back(Episode("R", "03482", "Homelander",  "Action", 10, vector <double> {1,3,5}));
+    lista.push_back(Episode("R", "01234", "Arrogante",  "Action", 10, vector <double> {4,2.4,4}));
+    lista.push_back(Episode("R", "01234", "La Hembra",  "Action", 10, vector <double> {4,3.5,5}));
+    lista.push_back(Episode("R", "34052", "Final",  "Action", 10, vector <double> {3,5,4}));
 
     vector <Episode> s1 = {lista[5], lista[6], lista[7]};
-    vector <Episode> s2= {lista[8], lista[9], lista[10]};
+    vector <Episode> s2 = {lista[8], lista[9], lista[10]};
+
+    Season seas1 = Season(s1,false,3);
+    Season seas2 = Season(s2,true,3);
+
+    vector <Season> seasons;
+    seasons.push_back(seas1);
+    seasons.push_back(seas2);
+
+    Series theB = Series("The Boys", seasons, true);
+    programas.push_back(theB);
 
 
     while (true) {
@@ -135,7 +146,62 @@ int main () {
 
         } 
         else if (option == 3) {
-            
+            cout << "Choose a Series: " << endl;
+            int index = 1;
+
+            for (Series s : programas) {
+                cout << index << ".- " << s.getName() << endl;
+                index++;
+            }
+            int opt;
+            // Rate to look for must be between 0 and 5
+            try {
+                while (!(std::cin >> opt)) {
+                    cout << "Please introduce a number" << std::endl;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                }                
+                // When an index not registered is input
+                if (opt > index) {
+                    throw "Error: No series in index chosen.";
+                }
+            } catch (const char* msj) {
+                cout << msj << endl;
+                break;
+            }
+
+            cout << "What rate are you looking for in the movies?" << endl;
+            int rate;
+
+            // Rate to look for must be between 0 and 5
+            try {
+                while (!(std::cin >> rate)) {
+                    cout << "Please introduce a number" << std::endl;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                }                
+                // When an index not registered is input
+                if (rate > 5) {
+                    throw "Error: No video can have a rate higher than 5.";
+                }
+            } catch (const char* msj) {
+                cout << msj << endl;
+                break;
+            }
+
+            for(Episode e : s1) {
+                if (e.getScore() > rate) {
+                    e.print();
+                    cout << "/////" << endl;
+                }
+            }
+            for(Episode e : s2) {
+                if (e.getScore() > rate) {
+                    e.print();
+                    cout << "/////" << endl;
+                }
+            }
+
         } 
         else if (option == 4) {
             cout << "What rate are you looking for in the movies?" << endl;
