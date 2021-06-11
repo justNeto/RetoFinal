@@ -60,10 +60,9 @@ int main() {
            while (getline(file, line)) {
                string type;
                int aux1 = 0;
-               int aux2 = 0;
                line.erase(remove_if(line.begin(), line.end(), ::isspace), line.end()); // Erases the current spaces found in the matriz file into lines of strings
 
-               for (int i = 0; i < line.length(); i++) {
+               for (int i = 0; i < line.length(); i++) { // First loop finds type of data in the line
                    if (line[i] == '|') {
                        aux1++;
                    } else {
@@ -71,21 +70,36 @@ int main() {
                    }
 
                    if (aux1 == 2) { // Found the a property
-                       // Type of video
-                       if (st == "Movie") {
-                           type = st; // find the type and interrupt first loop
-                       }
-                   }
+                       type = st; // Find type of video and break first iteration
+                       st = "";
+                       break;
+                    }
                }
 
                // After the type is found, do something
                if (type == "Movie") {
-                   // Create Movie object
+                   /*
+                   Create Movie object. In the file, a movie has the type of
+                   |Movie|ID|NameOfMovie|Director|Genre|Duration|Year|[1,2,3,4,5]|
+                   */
+                   break;
+
                } else if (type == "Video") {
-                   // Create video object
+                   /*
+                   Create Video object. In the file, a video has the type of
+                   |Video|ID|NameOfVideo|Genre|Duration|[1,2,3,4,5]|
+                   */
+                   break;
                } else if (type == "Episode") {
-                   // Create Episode object
+                   /* Create Episode object. In the file, an episode has a type of
+                   |Episode|ID|NameOfEpisode|Genre|Duration|Rate|1,2,3,4,5|
+                  */
+
+                   break;
                }
+           }
+
+
            }
 
            break;
