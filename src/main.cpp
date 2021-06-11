@@ -93,7 +93,7 @@ int main() {
                    */
                    break;
                } else if (type == "Episode") {
-                   /* Create Episode object. In the file, an episode has a type of
+                  /* Create Episode object. In the file, an episode has a type of
                    |Episode|ID|NameOfEpisode|Genre|Duration|Rate|1,2,3,4,5|
                   */
                    break;

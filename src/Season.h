@@ -16,6 +16,7 @@ class Season {
         Season();
         Season(vector<Episode> season, bool onAir, int seasonNum);
 
+        void addEpisode(Episode episode);
         double getScore();
         int getSeasonSize();
         void print();

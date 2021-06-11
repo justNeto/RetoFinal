@@ -17,6 +17,11 @@ Season::Season() {
   this->seasonNum = 1;
 }
 
+void Season::addEpisode(Episode episode) {
+    season.push_back(episode);    
+}
+
+
 Season::Season(vector<Episode> season, bool onAir, int seasonNum) {
   this -> season = season;
   this -> onAir = onAir;
