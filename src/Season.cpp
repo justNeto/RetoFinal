@@ -13,15 +13,14 @@ double Season::getScore() {
   return sum/num;
 }
 
-
 Season::Season() {
   this->seasonNum = 1;
 }
 
 Season::Season(vector<Episode> season, bool onAir, int seasonNum) {
-  this->season = season;
-  this-> onAir = onAir;
-  this->seasonNum = seasonNum;
+  this -> season = season;
+  this -> onAir = onAir;
+  this -> seasonNum = seasonNum;
 }
 
 int Season::getSeasonSize() {
