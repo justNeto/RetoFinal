@@ -75,6 +75,7 @@ int main() {
                        break;
                     }
                }
+               cout << type << endl;
 
                // After the type is found, do something
                if (type == "Movie") {
@@ -82,6 +83,7 @@ int main() {
                    Create Movie object. In the file, a movie has the type of
                    |Movie|ID|NameOfMovie|Director|Genre|Duration|Year|[1,2,3,4,5]|
                    */
+                   exit(EXIT_FAILURE);
                    break;
 
                } else if (type == "Video") {
@@ -94,15 +96,9 @@ int main() {
                    /* Create Episode object. In the file, an episode has a type of
                    |Episode|ID|NameOfEpisode|Genre|Duration|Rate|1,2,3,4,5|
                   */
-
                    break;
                }
            }
-
-
-           }
-
-           break;
        } else if (option == 2) {
            break;
        } else if (option == 3) {
