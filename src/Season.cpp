@@ -13,14 +13,18 @@ double Season::getScore() {
   return sum/num;
 }
 
+void Season::addEpisode(Episode episode) {
+    season.push_back(episode);
+}
+
 Season::Season() {
   this->seasonNum = 1;
 }
 
-void Season::addEpisode(Episode episode) {
-    season.push_back(episode);    
+Season::Season(int seasonNum, bool onAir) {
+  this->seasonNum = seasonNum;
+  this -> onAir = onAir;
 }
-
 
 Season::Season(vector<Episode> season, bool onAir, int seasonNum) {
   this -> season = season;
@@ -34,7 +38,7 @@ int Season::getSeasonSize() {
 
 void Season::print() {
   int num = 1;
-  cout << "Season number: " << getSeasonSize() << seasonNum << endl;
+  cout << "Season number: " << seasonNum << endl;
   cout << "Number of episodes: " << getSeasonSize() << endl;
   cout << "Average score of the season: " << getScore() << endl;
 

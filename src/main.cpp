@@ -6,6 +6,7 @@
 #include "Movie.h"
 #include "Season.h"
 #include "Series.h"
+#include "Cartelera.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ int main() {
     /* Welcome message */
     cout << "| Welcome to our program for reporting about content in X streaming platform |" << endl;
     cout << "| Enter file to load or write EXIT to finish the program |" << endl;
+
+    cartelera = Cartelera();
+    Series
 
     /*
     Para generar reportes de la informacion de videos, series y peliculas primero se crean los respectivas series y temporadas que se usaran

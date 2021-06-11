@@ -14,6 +14,7 @@ class Season {
     public:
         bool onAir;
         Season();
+        Season(int seasonNum, bool onAir);
         Season(vector<Episode> season, bool onAir, int seasonNum);
 
         void addEpisode(Episode episode);

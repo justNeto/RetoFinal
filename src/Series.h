@@ -16,6 +16,7 @@ class Series {
         Series();
         Series(string name, vector<Season> seasons, bool onAir);
 
+        void addSeason(Season season);
         double getScore();
         string getName();
         int getNumSeasons();

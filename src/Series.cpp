@@ -1,5 +1,9 @@
 #include "Series.h"
 
+void Season::addSeason(Season season) {
+    seasons.push_back(season);
+}
+
 Series::Series() {
     seasons = vector <Season> {};
     onAir = false;
