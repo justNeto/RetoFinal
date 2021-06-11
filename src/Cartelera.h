@@ -18,6 +18,8 @@ class Cartelera {
         double getScore();
         int getCarteleraSize();
         void print();
+        void addScore(int index, double score);
+        vector <Movie> getList();
 };
 
 #endif

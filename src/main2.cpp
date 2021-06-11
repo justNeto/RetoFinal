@@ -6,6 +6,7 @@
 #include "Movie.h"
 #include "Season.h"
 #include "Series.h"
+#include "Cartelera.h"
 
 using namespace std;
 
@@ -14,12 +15,12 @@ int main () {
     cout << "| Welcome to our program for reporting about content in X streaming platform |" << endl;
     cout << "| Enter file to load or write EXIT to finish the program |" << endl;
 
-    vector <Episode> lista;
-    vector <Movie> cartelera;
+    Cartelera c = Cartelera();
+    c.addEpisode(Movie("Denis Villeneuve", "BR47", "Blade Runner 2049", "Action", 164, 2017, vector <double> {4,3.5,4}));
+    c.addEpisode(Movie("Joseph Kosinski", "TR02", "Tron: Legacy", "Action", 127, 2010, vector <double> {3.4,2.8,2.1}));
+    c.addEpisode(Movie("Joe Russo, Anthony Russo", "EG04", "Avengers: Endgame", "Action", 182, 2019, vector <double> {4.2}));
 
-    cartelera.push_back(Movie("Denis Villeneuve", "BR47", "Blade Runner 2049", "Action", 164, 2017, vector <double> {4,3.5,4}));
-    cartelera.push_back(Movie("Joseph Kosinski", "TR02", "Tron: Legacy", "Action", 127, 2010, vector <double> {3.4,2.8,2.1}));
-    cartelera.push_back(Movie("Joe Russo, Anthony Russo", "EG04", "Avengers: Endgame", "Action", 182, 2019, vector <double> {4.2}));
+    vector <Episode> lista;
 
     lista.push_back(Episode());
     lista.push_back(Episode());
@@ -56,9 +57,11 @@ int main () {
         if (option == 0) {
             cout << "Thanks for choosing our streaming service" << endl;
             break;
-        } else if (option == 1) {
+        } 
+        else if (option == 1) {
             // TODO
-        } else if (option == 2) {
+        } 
+        else if (option == 2) {
             cout << "How would you like to sort all videos? By genre (0) or rating (1)?" << endl;
             int opt;
             try {
@@ -84,7 +87,7 @@ int main () {
                     cin.ignore(100, '\n');
                 }
                 int index = 1;
-                for (Movie m : cartelera) {
+                for (Movie m : c.getList()) {
                     if (m.getGenre() == genre) {
                         cout << index << ".- (Movie) " << m.getName() << endl;
                         index++;
@@ -96,7 +99,8 @@ int main () {
                         index++;
                     }
                 }
-            } else if (opt == 1) {
+            } 
+            else if (opt == 1) {
                 cout << "What rate are you looking for in the videos?" << endl;
                 int rate;
                 // Rate to look for must be between 0 and 5
@@ -115,7 +119,7 @@ int main () {
                     break;
                 }
                 int index = 1;
-                for (Movie m : cartelera) {
+                for (Movie m : c.getList()) {
                     if (m.getScore() > rate) {
                         cout << index << ".- (Movie) " << m.getName() << endl;
                         index++;
@@ -129,9 +133,11 @@ int main () {
                 }
             }
 
-        } else if (option == 3) {
+        } 
+        else if (option == 3) {
             
-        } else if (option == 4) {
+        } 
+        else if (option == 4) {
             cout << "What rate are you looking for in the movies?" << endl;
             int rate;
 
@@ -151,7 +157,7 @@ int main () {
                 break;
             }
 
-            for (Movie m : cartelera) {
+            for (Movie m : c.getList()) {
                 if (m.getScore() >= rate) {
                     m.print();
                     cout << "//////" << endl;
@@ -163,7 +169,7 @@ int main () {
             int i = 1;
             int index;
             double score;
-            for (Movie m : cartelera) {
+            for (Movie m : c.getList()) {
                 cout << i << ".- " << m.getName() << endl;
                 // m.print();
                 i++;
@@ -202,8 +208,8 @@ int main () {
                 break;
             }
 
-            cartelera[index-1].addScore(score);
-            cout << "Review added, this movie now has a score of: " << cartelera[index-1].getScore() << endl;
+            c.addScore(index-1,score);
+            cout << "Review added, this movie now has a score of: " << c.getList()[index-1].getScore() << endl;
         }
     }
 }

@@ -38,3 +38,11 @@ void Cartelera::print() {
     cout << num << ".- " << movie.getName() << endl;
   }
 }
+
+void Cartelera::addScore(int index, double score) {
+    peliculas[index].addScore(score);
+}
+
+vector <Movie> Cartelera::getList() {
+    return peliculas;
+}
